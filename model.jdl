@@ -1,0 +1,70 @@
+
+
+
+entity  TODOList {
+    type TypeVehicule
+    marque String
+    model String
+    immatriculation String
+    numeroserie String
+    numerochassis String
+}
+
+
+enum TypeVehicule {
+  AUTO,
+  MOTO,
+  KARTING,
+  SIDECAR
+}
+
+
+relationship OneToMany {
+/*    Sinistre{etats} to ChangementEtatSinitre{sinistre}
+    EtatSinitre to ChangementEtatSinitre{etat}
+    Sinistre{fichiers(nom)} to Fichier{sinistre}
+    Contrat{fichiers(nom)} to Fichier{contrat}
+    Contact{clients(nom)} to Adherent{souscripteur(nom)}
+    Adherent{contrats} to Contrat{client(nom)}
+    Contrat{sinistres} to Sinistre{contrat}
+    Apporteur{contrat} to Contrat{apporteur(nom)}
+    Compagnie{produits} to Produit{compagnie(nom)}
+    ClientEntreprise{contacts(nom)} to Contact{entreprise(nom)}
+    ParaProduitClientEnt{contrats} to Contrat{produit(nom)}
+    Adherent{vehicules(model)} to Vehicule{owner(nom)}
+    Transaction{contrat} to Contrat{transaction}*/
+
+
+
+}
+
+relationship ManyToMany {
+  /*   Produit{fichiers(nom)} to Fichier{produit(nom)}
+    Produit{visibleTypeSinistres(nom)} to TypeSinistre{produit(nom)}
+    Produit{visibleTypeCauseSinistres(nom)} to TypeCauseSinistre{produit(nom)}
+    ParaProduitClientEnt{typePaiement(nom)} to TypePaiement{parametrageproduit(nom)}*/
+}
+
+/**
+ * Many to one relationship.
+ */
+relationship ManyToOne {
+/*   Sinistre{typeSinistre(nom)} to TypeSinistre
+    Sinistre{typeCauseSinistre(nom)} to TypeCauseSinistre
+    ParaProduitClientEnt{client(nom)} to ClientEntreprise
+    ParaProduitClientEnt{produit(nom)} to Produit
+    ParaProduitClientEnt{fichierCalculPrix(nom)} to Fichier
+    Contrat{circuit(nom)} to Circuit*/
+}
+
+relationship OneToOne {
+  /*  Contact{user(login)} to User with jpaDerivedIdentifier
+    Adherent{user(login)} to User with jpaDerivedIdentifier
+    Apporteur{user(login)} to User with jpaDerivedIdentifier
+    Contrat{vehicule(model)} to Vehicule{contrats}*/
+}
+
+paginate * with pagination
+paginate * with pagination
+service * with serviceClass
+dto * with mapstruct

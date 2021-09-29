@@ -1,0 +1,8 @@
+{
+  "generator-jhipster:7.2.0": {
+    "promptValues": {
+      "packageName": "fr.istic.taa",
+      "nativeLanguage": "fr"
+    }
+  }
+}
