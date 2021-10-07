@@ -1,0 +1,26 @@
+{
+  "correctionTaaApp": {
+    "tODOList": {
+      "home": {
+        "title": "TODO Lists",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new TODO List",
+        "createOrEditLabel": "Create or edit a TODO List",
+        "notFound": "No TODO Lists found"
+      },
+      "created": "A new TODO List is created with identifier {{ param }}",
+      "updated": "A TODO List is updated with identifier {{ param }}",
+      "deleted": "A TODO List is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete TODO List {{ id }}?"
+      },
+      "detail": {
+        "title": "TODO List"
+      },
+      "id": "ID",
+      "nom": "Nom",
+      "tasks": "Tasks",
+      "user": "User"
+    }
+  }
+}

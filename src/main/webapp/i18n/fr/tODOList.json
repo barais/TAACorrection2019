@@ -1,0 +1,26 @@
+{
+  "correctionTaaApp": {
+    "tODOList": {
+      "home": {
+        "title": "TODOLists",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau TODO List",
+        "createOrEditLabel": "Créer ou éditer un TODO List",
+        "notFound": "Aucun TODO List trouvé"
+      },
+      "created": "Un nouveau TODO List a été créé avec l'identifiant {{ param }}",
+      "updated": "Le TODO List avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le TODO List avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le TODO List {{ id }} ?"
+      },
+      "detail": {
+        "title": "TODO List"
+      },
+      "id": "ID",
+      "nom": "Nom",
+      "tasks": "Tasks",
+      "user": "User"
+    }
+  }
+}

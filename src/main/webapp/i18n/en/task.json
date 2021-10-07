@@ -1,0 +1,33 @@
+{
+  "correctionTaaApp": {
+    "task": {
+      "home": {
+        "title": "Tasks",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Task",
+        "createOrEditLabel": "Create or edit a Task",
+        "notFound": "No Tasks found"
+      },
+      "created": "A new Task is created with identifier {{ param }}",
+      "updated": "A Task is updated with identifier {{ param }}",
+      "deleted": "A Task is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Task {{ id }}?"
+      },
+      "detail": {
+        "title": "Task"
+      },
+      "id": "ID",
+      "libelle": "Libelle",
+      "dateButoire": "Date Butoire",
+      "repetition": "Repetition",
+      "dureeEstime": "Duree Estime",
+      "lieu": "Lieu",
+      "url": "Url",
+      "description": "Description",
+      "affecteduser": "Affecteduser",
+      "tags": "Tags",
+      "todolist": "Todolist"
+    }
+  }
+}

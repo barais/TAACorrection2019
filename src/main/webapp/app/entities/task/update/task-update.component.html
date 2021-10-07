@@ -1,0 +1,145 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-task-heading" data-cy="TaskCreateUpdateHeading" jhiTranslate="correctionTaaApp.task.home.createOrEditLabel">
+        Create or edit a Task
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="correctionTaaApp.task.libelle" for="field_libelle">Libelle</label>
+          <input type="text" class="form-control" name="libelle" id="field_libelle" data-cy="libelle" formControlName="libelle" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="correctionTaaApp.task.dateButoire" for="field_dateButoire">Date Butoire</label>
+          <div class="input-group">
+            <input
+              id="field_dateButoire"
+              data-cy="dateButoire"
+              type="text"
+              class="form-control"
+              name="dateButoire"
+              ngbDatepicker
+              #dateButoireDp="ngbDatepicker"
+              formControlName="dateButoire"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateButoireDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="correctionTaaApp.task.repetition" for="field_repetition">Repetition</label>
+          <select class="form-control" name="repetition" formControlName="repetition" id="field_repetition" data-cy="repetition">
+            <option [ngValue]="null">{{ 'correctionTaaApp.RepetitionType.null' | translate }}</option>
+            <option value="HEDBOMADAIRE">{{ 'correctionTaaApp.RepetitionType.HEDBOMADAIRE' | translate }}</option>
+            <option value="JOURNALIER">{{ 'correctionTaaApp.RepetitionType.JOURNALIER' | translate }}</option>
+            <option value="MENSUEL">{{ 'correctionTaaApp.RepetitionType.MENSUEL' | translate }}</option>
+            <option value="BIMENSUEL">{{ 'correctionTaaApp.RepetitionType.BIMENSUEL' | translate }}</option>
+            <option value="TRIMESTRIEL">{{ 'correctionTaaApp.RepetitionType.TRIMESTRIEL' | translate }}</option>
+            <option value="SEMESTRIEL">{{ 'correctionTaaApp.RepetitionType.SEMESTRIEL' | translate }}</option>
+            <option value="ANNUEL">{{ 'correctionTaaApp.RepetitionType.ANNUEL' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="correctionTaaApp.task.dureeEstime" for="field_dureeEstime">Duree Estime</label>
+          <input
+            type="text"
+            class="form-control"
+            name="dureeEstime"
+            id="field_dureeEstime"
+            data-cy="dureeEstime"
+            formControlName="dureeEstime"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="correctionTaaApp.task.lieu" for="field_lieu">Lieu</label>
+          <input type="text" class="form-control" name="lieu" id="field_lieu" data-cy="lieu" formControlName="lieu" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="correctionTaaApp.task.url" for="field_url">Url</label>
+          <input type="text" class="form-control" name="url" id="field_url" data-cy="url" formControlName="url" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="correctionTaaApp.task.description" for="field_description">Description</label>
+          <textarea
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="correctionTaaApp.task.affecteduser" for="field_affecteduser">Affecteduser</label>
+          <select class="form-control" id="field_affecteduser" data-cy="affecteduser" name="affecteduser" formControlName="affecteduser">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('affecteduser')!.value?.id ? editForm.get('affecteduser')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.login }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label jhiTranslate="correctionTaaApp.task.tags" for="field_tags">Tags</label>
+          <select class="form-control" id="field_tags" data-cy="tags" multiple name="tags" formControlName="tags">
+            <option
+              [ngValue]="getSelectedTag(tagOption, editForm.get('tags')!.value)"
+              *ngFor="let tagOption of tagsSharedCollection; trackBy: trackTagById"
+            >
+              {{ tagOption.nom }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="correctionTaaApp.task.todolist" for="field_todolist">Todolist</label>
+          <select class="form-control" id="field_todolist" data-cy="todolist" name="todolist" formControlName="todolist">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="tODOListOption.id === editForm.get('todolist')!.value?.id ? editForm.get('todolist')!.value : tODOListOption"
+              *ngFor="let tODOListOption of tODOListsSharedCollection; trackBy: trackTODOListById"
+            >
+              {{ tODOListOption.nom }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

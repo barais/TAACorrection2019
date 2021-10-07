@@ -1,0 +1,14 @@
+{
+  "correctionTaaApp": {
+    "RepetitionType": {
+      "null": "",
+      "HEDBOMADAIRE": "HEDBOMADAIRE",
+      "JOURNALIER": "JOURNALIER",
+      "MENSUEL": "MENSUEL",
+      "BIMENSUEL": "BIMENSUEL",
+      "TRIMESTRIEL": "TRIMESTRIEL",
+      "SEMESTRIEL": "SEMESTRIEL",
+      "ANNUEL": "ANNUEL"
+    }
+  }
+}

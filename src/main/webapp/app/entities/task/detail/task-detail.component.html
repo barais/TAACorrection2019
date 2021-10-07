@@ -1,0 +1,73 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="task">
+      <h2 data-cy="taskDetailsHeading"><span jhiTranslate="correctionTaaApp.task.detail.title">Task</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ task.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="correctionTaaApp.task.libelle">Libelle</span></dt>
+        <dd>
+          <span>{{ task.libelle }}</span>
+        </dd>
+        <dt><span jhiTranslate="correctionTaaApp.task.dateButoire">Date Butoire</span></dt>
+        <dd>
+          <span>{{ task.dateButoire | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="correctionTaaApp.task.repetition">Repetition</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'correctionTaaApp.RepetitionType.' + task.repetition }}">{{ task.repetition }}</span>
+        </dd>
+        <dt><span jhiTranslate="correctionTaaApp.task.dureeEstime">Duree Estime</span></dt>
+        <dd>
+          <span>{{ task.dureeEstime | duration }} ({{ task.dureeEstime }})</span>
+        </dd>
+        <dt><span jhiTranslate="correctionTaaApp.task.lieu">Lieu</span></dt>
+        <dd>
+          <span>{{ task.lieu }}</span>
+        </dd>
+        <dt><span jhiTranslate="correctionTaaApp.task.url">Url</span></dt>
+        <dd>
+          <span>{{ task.url }}</span>
+        </dd>
+        <dt><span jhiTranslate="correctionTaaApp.task.description">Description</span></dt>
+        <dd>
+          <span>{{ task.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="correctionTaaApp.task.affecteduser">Affecteduser</span></dt>
+        <dd>
+          <span>{{ task.affecteduser?.login }}</span>
+        </dd>
+        <dt><span jhiTranslate="correctionTaaApp.task.tags">Tags</span></dt>
+        <dd>
+          <span *ngFor="let tags of task.tags; let last = last">
+            <a [routerLink]="['/tag', tags?.id, 'view']">{{ tags.nom }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="correctionTaaApp.task.todolist">Todolist</span></dt>
+        <dd>
+          <div *ngIf="task.todolist">
+            <a [routerLink]="['/todo-list', task.todolist?.id, 'view']">{{ task.todolist?.nom }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/task', task.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

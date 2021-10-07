@@ -39,6 +39,11 @@ public class LoggingAspect {
         // Method is empty as this is just a Pointcut, the implementations are in the advices.
     }
 
+    @Pointcut("call(* fr.istic.taa.service.*Service.*(..)")
+    public void examTAAPointcut() {
+        // Method is empty as this is just a Pointcut, the implementations are in the advices.
+    }
+
     /**
      * Pointcut that matches all Spring beans in the application's main packages.
      */
@@ -55,6 +60,12 @@ public class LoggingAspect {
      */
     private Logger logger(JoinPoint joinPoint) {
         return LoggerFactory.getLogger(joinPoint.getSignature().getDeclaringTypeName());
+    }
+
+    @Around("examTAAPointcut")
+    public Object logAround1(ProceedingJoinPoint joinPoint) throws Throwable {
+        this.logger(joinPoint);
+        return joinPoint.proceed();
     }
 
     /**

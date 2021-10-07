@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="tODOList">
+      <h2 data-cy="tODOListDetailsHeading"><span jhiTranslate="correctionTaaApp.tODOList.detail.title">TODO List</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ tODOList.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="correctionTaaApp.tODOList.nom">Nom</span></dt>
+        <dd>
+          <span>{{ tODOList.nom }}</span>
+        </dd>
+        <dt><span jhiTranslate="correctionTaaApp.tODOList.user">User</span></dt>
+        <dd>
+          <span>{{ tODOList.user?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/todo-list', tODOList.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
